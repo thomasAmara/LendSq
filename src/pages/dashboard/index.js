@@ -22,7 +22,7 @@ import User from '../../../public/images/activeUsers.svg';
 import ActivateUser from '../../../public/images/ActivateUser.svg';
 import Eye from '../../../public/images/Eye.svg';
 import Blacklist from '../../../public/images/blacklistUser.svg';
-
+import Filter from '../../../public/images/filterIcon.svg';
 
 function Dashboard() {
   const [id, setID] = React.useState('');
@@ -49,14 +49,17 @@ function Dashboard() {
 
   const columns = [
     {
-      title: 'ORGANIZATION',
+      //   title: ('<>
+      //   <Filter /> 546
+      // </> ')
+      //    ,
+      title: (filters, sortOrder) => <div>Title</div>,
       dataIndex: 'orgName',
       key: 'name',
     },
     {
       title: 'USER',
       dataIndex: 'userName',
-      //   render: (item) => Object.values(item)[0] + Object.values(item)[1],
     },
     {
       title: 'EMAIL',
@@ -79,7 +82,7 @@ function Dashboard() {
       title: 'STATUS',
     },
     {
-      title: 'Actions',
+      // title: 'Actions',
       dataIndex: 'address',
       key: 'id',
       // eslint-disable-next-line react/display-name
@@ -212,6 +215,13 @@ function Dashboard() {
                 columns={columns}
                 dataSource={data}
                 rowSelection={id}
+                components={{
+                  Pagination: (props) => (
+                    <div style={{ float: 'right', padding: '20px' }}>
+                      <Pagination pageSize={10} />
+                    </div>
+                  ),
+                }}
               />
             </Box>
           </Box>
