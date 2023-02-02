@@ -1,0 +1,55 @@
+/* @import "~antd/dist/antd.css"; */
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap'); */
+/* @import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css"; */
+
+@font-face {
+  font-family: Segoe UI;
+  src:url(../theme//fonts//SergeoUi/Segoe\ UI.ttf)
+  /* src: url(../public/fonts/Segoe\ UI.ttf); */
+}
+
+@font-face {
+  font-family: Segoe UI;
+  src: url(../theme//fonts//SergeoUi/Segoe\ UI\ Bold\ Italic.woff);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Segoe UI;
+  src: url(../public//fonts/Segoe\ UI\ Bold\ Italic.ttf);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Cerebri Sans;
+  src: url(../public//fonts/CerebriSansPro-HeavyItalic.otf);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Cerebri Sans;
+  src: url(../public//fonts/CerebriSansPro-ExtraBold.otf);
+  font-style: bold;
+}
+
+@font-face {
+  font-family: Cerebri Sans;
+  src: url(../public//fonts/CerebriSansPro-Regular.otf);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Segoe UI, sans-serif;
+  min-width: 400px !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

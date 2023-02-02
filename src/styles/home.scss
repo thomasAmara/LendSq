@@ -1,0 +1,23 @@
+.home{
+    height: 99vh;
+    .customerContainer{
+        max-width: 240px;
+        width:100%;
+        border-radius: 4px;
+        padding: 14px;
+        background-color: #FFF;
+        border: 0.5px solid #f2f8fc;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.102355);
+    }
+}
+
+.ant-table-title{
+    padding: 10px 0px;
+}
+
+.ant-table-thead > tr > th {
+    font-size: 12px;
+    font-weight: 600;
+    color: #545F57;
+
+}

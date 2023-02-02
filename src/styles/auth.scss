@@ -1,0 +1,38 @@
+.authContainer{
+    .leftContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 50%;
+        align-self: center;
+        // border: 2px solid black;
+        padding: 30px;
+   
+        .logoContainer{
+           margin-top: -20px;
+            max-width: 400px;
+            background-position: center;
+            background-size: 100% 100%;
+            height: 7%;
+            width: 60%;
+            background-image: url('../../public/images/logo.svg');
+        }
+.imageContainer{
+    margin: 80 auto;
+    background-position:center;
+    background-size: 120% 100%;
+    background-repeat: no-repeat;
+    height: 65%;
+    width: 100%;
+    max-width: 600px;
+    background-image: url('../../public/images/sign-in_Image.svg');
+}
+    }
+    .loginContainer{
+        // height: 100%;
+        width: 100%;
+        max-width: 50%;
+        align-self: center;
+        padding-top: 30px;
+    }
+}

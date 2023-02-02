@@ -1,0 +1,73 @@
+.userLayout{
+    .site-layout-sub-header-background{
+        .headerDetail{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height:100%;
+            width: 100%;
+            max-width: 1440px;
+            .headerLogo{
+                display: flex;
+                cursor: pointer;
+                margin-left: 15px;
+                width: 100%;
+                max-width: 280px;
+                height: 100%;
+                background-position: 100%;
+                background-size: 60% 55%;
+                background-repeat: no-repeat;
+                // background-image: url('../../public//images/logo.svg');
+            }
+            .headerRight{
+            display: flex;
+            justify-content: space-between;
+            max-width: 1120px;
+            width: 100%;
+            padding: 10px 20px;
+                .searchBox{
+                    margin-left: 20px;
+                    display: flex;
+                    height: 100%;
+                    max-width: 380px;
+                    width: 100%;
+                    align-items: center;
+                    align-self: center;
+                }
+                .userNotifications{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 90%;
+                    max-width: 260px;
+                    // border: 1px solid black
+                }
+            }
+        }
+    }
+    .sideGroup{
+        height: 98vh;
+        border: 1px solid rgba(63,63,68,.004);
+        box-shadow: 0 1px 0 rgb(63 63 68 / 5%), 0 1px 3px rgb(63 63 68 / 15%);
+        background-color: #FFF;
+        margin-top: 22px;
+    }
+}
+.bodyContainer{
+    margin-left: 270px;
+    margin-top: 70px;
+    background-color: #E5E5E5;
+    .contentContainer{
+        width: 94%;
+        margin: 0 auto;
+        padding: 24px 0px 0;
+    }
+   
+  }
+
+  @media (max-width:992px){
+    .bodyContainer {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
