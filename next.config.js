@@ -13,6 +13,16 @@ here https://github.com/vercel/next-plugins/tree/master/packages/next-sass*/
   cssModules: true,
 });
 
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        domain: ['cloudflare-ipfs.com'],
+      },
+    ],
+  },
+};
+
 // module.exports = withFonts(withCss(
 //   withSass({
 //     webpack(config, options) {
