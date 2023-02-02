@@ -19,10 +19,10 @@ import Saving from '../../../public/images/userSaving.svg';
 import Active from '../../../public/images/userIcons.svg';
 import Report from '../../../public/images/loanReport.svg';
 import User from '../../../public/images/activeUsers.svg';
-import ActivateUser from '../../../public/images/ActivateUser.svg';
+import ActivateUser from '../../../public/images/activateUser.svg';
 import Eye from '../../../public/images/Eye.svg';
 import Blacklist from '../../../public/images/blacklistUser.svg';
-import Filter from '../../../public/images/filterIcon.svg';
+// import Filter from '../../../public/images/filterIcon.svg';
 
 function Dashboard() {
   const [id, setID] = React.useState('');

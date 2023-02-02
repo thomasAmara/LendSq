@@ -1,4 +1,4 @@
-import { actionType } from './ActionType';
+import { actionType } from './Actiontype';
 
 const { VIEWCUSTOMER } = actionType;
 
