@@ -1,17 +1,10 @@
 import React from 'react';
 import {
-  SimpleGrid,
   Box,
   Text,
   Wrap,
   Button,
   Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  WrapItem,
-  useMediaQuery,
-  useDisclosure,
   useToast,
   HStack,
   Stack,
@@ -20,7 +13,8 @@ import Link from 'next/link';
 import DashboardLayout from './dashboardLayout';
 import { MdKeyboardBackspace } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-// import Back from '../public/images/previewArrow.svg';
+import Image from 'next/image';
+import { formatter } from '../components/Formatter';
 
 function UsersDetails() {
   const { customerInfo } = useSelector((state) => state.customerReducer);
@@ -37,9 +31,9 @@ function UsersDetails() {
                 color='#545F7D'
                 borderRadius='5px'
                 _hover={{ bg: '#ebedf0' }}
-                // leftIcon={
-                //   <MdKeyboardBackspace size='34px' ml='-50px' color='#545F7D' />
-                // }
+                leftIcon={
+                  <MdKeyboardBackspace size='34px' ml='-50px' color='#545F7D' />
+                }
                 // leftIcon={<Back />}
               >
                 <Link href='/dashboard'>Back to User</Link>
@@ -69,9 +63,47 @@ function UsersDetails() {
           </Box>
           <Box className='midContainer'>
             <Stack direction='row'>
-              <Box>Grace Effiom</Box>
+              <Box display='flex' flexDirection='row'>
+                <Box
+                  bg='#AAAFBE'
+                  w='100px'
+                  height='100px'
+                  cursor='pointer'
+                  borderRadius='50%'
+                >
+                  <Image
+                    width={50}
+                    height={50}
+                    //src='https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/725.jpg'
+                    // src={`${customerInfo.profile.avatar}`}
+                    alt='userProfile'
+                  />
+                  {console.log('ioio', `${customerInfo.profile.avatar}`)}
+                </Box>
+                <Text
+                  alignSelf='center'
+                  color='#213F7D'
+                  fontSize='22px'
+                  fontWeight='500'
+                >
+                  {customerInfo.profile.firstName}
+                </Text>
+                <Text
+                  alignSelf='center'
+                  ml='10px'
+                  color='#213F7D'
+                  fontSize='22px'
+                  fontWeight='500'
+                >
+                  {customerInfo.profile.lastName}
+                </Text>
+              </Box>
               <Box>User Tier</Box>
-              <Box>N 200,000.00</Box>
+              <Box>
+                <Text color='#213F7D' fontSize='22px' fontWeight='500'>
+                  {formatter.format(200000)}
+                </Text>
+              </Box>
             </Stack>
           </Box>
           <Box className='bottomContainer'>
@@ -99,41 +131,45 @@ function UsersDetails() {
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Phone Number</Text>
-                    <Text>{customerInfo.profile.phoneNumber}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.profile.phoneNumber}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Email Address</Text>
-                    {customerInfo.email}
+                    <Text className='textInfo'> {customerInfo.email}</Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>BVN</Text>
-                    <Text>{customerInfo.profile.bvn}</Text>
+                    <Text className='textInfo'>{customerInfo.profile.bvn}</Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Gender</Text>
-                    <Text>{customerInfo.profile.gender}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.profile.gender}
+                    </Text>
                   </Box>
                 </Stack>
               </Box>
               <Box>
                 <Stack
                   direction={['column', 'row']}
-                  w='57%'
+                  w='55%'
                   mt='20px'
                   spacing='24px'
-                  mb='10px'
+                  mb='20px'
                 >
                   <Box w='full'>
                     <Text className='textHeading'>Marital Status</Text>
-                    <Text>Marital Status</Text>
+                    <Text className='textInfo'>Marital Status</Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Children</Text>
-                    <Text></Text>
+                    <Text className='textInfo'>None</Text>
                   </Box>
                   <Box w='full' display='flex' flexDirection='column'>
                     <Text className='textHeading'>Type of Residence</Text>
-                    <Text>Parent Apartment</Text>
+                    <Text className='textInfo'>Parent Apartment</Text>
                   </Box>
                 </Stack>
               </Box>
@@ -153,19 +189,27 @@ function UsersDetails() {
                 <Stack direction={['column', 'row']} mt='20px'>
                   <Box w='full'>
                     <Text className='textHeading'>Level of Education</Text>
-                    <Text>{customerInfo.education.level}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.education.level}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Employment Status</Text>
-                    <Text>{customerInfo.education.employmentStatus}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.education.employmentStatus}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Sector of Employment</Text>
-                    <Text>{customerInfo.education.sector}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.education.sector}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Duration of Employment</Text>
-                    <Text>{customerInfo.education.duration}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.education.duration}
+                    </Text>
                   </Box>
                 </Stack>
               </Box>
@@ -173,12 +217,14 @@ function UsersDetails() {
                 <Stack
                   direction={['column', 'row']}
                   w='75%'
-                  mb='10px'
+                  mb='20px'
                   mt='20px'
                 >
                   <Box w='full'>
                     <Text className='textHeading'>Office Email</Text>
-                    <Text>{customerInfo.education.officeEmail}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.education.officeEmail}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Monthly Income</Text>
@@ -189,13 +235,24 @@ function UsersDetails() {
                       flexDirection='row'
                       justifyContent='space-between'
                     >
-                      <Text>{customerInfo.education.monthlyIncome[0]}</Text>
-                      <Text>{customerInfo.education.monthlyIncome[1]}</Text>
+                      <Text className='textInfo'>
+                        {formatter.format(
+                          customerInfo.education.monthlyIncome[0]
+                        )}
+                      </Text>
+
+                      <Text ml='4px' className='textInfo'>
+                        {formatter
+                          .format(customerInfo.education.monthlyIncome[1])
+                          .toLocaleString()}
+                      </Text>
                     </Box>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Loan Repayment</Text>
-                    <Text>{customerInfo.education.loanRepayment}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.education.loanRepayment}
+                    </Text>
                   </Box>
                 </Stack>
               </Box>
@@ -212,18 +269,29 @@ function UsersDetails() {
                 </Text>
               </Box>
               <Box>
-                <Stack direction={['column', 'row']} mt='20px'>
+                <Stack
+                  direction={['column', 'row']}
+                  w='70%'
+                  mb='20px'
+                  mt='20px'
+                >
                   <Box w='full'>
                     <Text className='textHeading'>TWITTER</Text>
-                    <Text>{customerInfo.socials.twitter}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.socials.twitter}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>FACEBOOk</Text>
-                    <Text>{customerInfo.socials.facebook}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.socials.facebook}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>INSTAGRAM</Text>
-                    <Text>{customerInfo.socials.instagram}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.socials.instagram}
+                    </Text>
                   </Box>
                 </Stack>
               </Box>
@@ -233,25 +301,31 @@ function UsersDetails() {
                 Gurantor
               </Text>
               <Box>
-                <Stack direction={['column', 'row']} mt='20px'>
+                <Stack direction={['column', 'row']} mb='20px' mt='20px'>
                   <Box w='full'>
                     <Text className='textHeading'>Full Name</Text>
-                    <Text>
+                    <Text className='textInfo'>
                       {customerInfo.guarantor.firstName}{' '}
                       {customerInfo.guarantor.lastName}
                     </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Phone Number</Text>
-                    <Text>{customerInfo.guarantor.phoneNumber}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.guarantor.phoneNumber}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Email Address</Text>
-                    <Text>{customerInfo.guarantor.address}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.guarantor.address}
+                    </Text>
                   </Box>
                   <Box w='full'>
                     <Text className='textHeading'>Relationship</Text>
-                    <Text>{customerInfo.guarantor.gender}</Text>
+                    <Text className='textInfo'>
+                      {customerInfo.guarantor.gender}
+                    </Text>
                   </Box>
                 </Stack>
               </Box>
