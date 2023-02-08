@@ -58,12 +58,17 @@ function UsersDetails() {
                 >
                   ACTIVATE USER
                 </Button>
-              </Box>{' '}
+              </Box>
             </Box>
           </Box>
           <Box className='midContainer'>
-            <Stack direction='row'>
-              <Box display='flex' flexDirection='row'>
+            <Stack direction='row' spacing='30px'>
+              <Box
+                display='flex'
+                flexDirection='row'
+                w='35%'
+                justifyContent='space-between'
+              >
                 <Box
                   bg='#AAAFBE'
                   w='100px'
@@ -80,26 +85,34 @@ function UsersDetails() {
                   />
                   {console.log('ioio', `${customerInfo.profile.avatar}`)}
                 </Box>
-                <Text
-                  alignSelf='center'
-                  color='#213F7D'
-                  fontSize='22px'
-                  fontWeight='500'
-                >
-                  {customerInfo.profile.firstName}
-                </Text>
-                <Text
-                  alignSelf='center'
-                  ml='10px'
-                  color='#213F7D'
-                  fontSize='22px'
-                  fontWeight='500'
-                >
-                  {customerInfo.profile.lastName}
+                <Box display='flex' flexDirection='column' alignSelf='center'>
+                  <Box display='flex'>
+                    <Text color='#213F7D' fontSize='22px' fontWeight='500'>
+                      {customerInfo.profile.firstName}
+                    </Text>
+                    <Text
+                      ml='10px'
+                      color='#213F7D'
+                      fontSize='22px'
+                      fontWeight='500'
+                    >
+                      {customerInfo.profile.lastName}
+                    </Text>
+                  </Box>
+
+                  <Box>
+                    <Text color='#545F7D' fontSize='14px' fontWeight='400'>
+                      LSQFf87g90
+                    </Text>
+                  </Box>
+                </Box>
+              </Box>
+              <Box display='flex' alignSelf='center'>
+                <Text color='#213F7D' fontSize='14px' fontWeight='500'>
+                  User Tier
                 </Text>
               </Box>
-              <Box>User Tier</Box>
-              <Box>
+              <Box display='flex' alignSelf='center'>
                 <Text color='#213F7D' fontSize='22px' fontWeight='500'>
                   {formatter.format(200000)}
                 </Text>
