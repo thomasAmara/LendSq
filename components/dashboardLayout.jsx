@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Divider, Layout, Badge, Menu } from 'antd';
+import { MenuProps } from 'antd';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
 import Avatar from '../public/images/userImage.png';
+import Profile from '../public/images/profileImg.svg';
 import { IoMdNotificationsOutline } from 'react-icons/io';
+import Home from '../public/images/home.svg';
+import User from '../public/images/users.svg';
+import Gurantor from '../public/images/gurantor.svg';
+import Loans from '../public/images/loans.svg';
+import HandShake from '../public/images/handShake.svg';
+import PiggyBank from '../public/images/piggy-bank.svg';
+import LoanRequest from '../public/images/loanRequest.svg';
+import Coins from '../public/images/coins.svg';
+import Transactions from '../public/images/transactions.svg';
+import WhiteList from '../public/images/whitelist.svg';
+import Audit from '../public/images/Audit.svg';
 import Image from 'next/image';
 import {
   useMediaQuery,
@@ -53,11 +66,22 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
     fontWeight: '400',
     fontSize: '16px',
   };
+
+  const index = 0;
   //   const selected = localStorage.getItem('key');
 
   //   useEffect(() => {
   //     setActive(selected);
   //   }, [selected]);
+
+  // const onOpenChange = (keys) => {
+  //   const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+  //   if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+  //     setOpenKeys(keys);
+  //   } else {
+  //     setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+  //   }
+  // };
 
   return (
     <div className='userLayout'>
@@ -137,7 +161,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                       borderRadius: '100px',
                       alignSelf: 'center',
                     }}
-                    src={Avatar}
+                    src={Profile}
                     alt='Adedeji'
                   />
                 </Box>
@@ -168,6 +192,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
               //   zIndex: 1000,
               backgroundColor: '#F9F9FB',
               minWidth: '250px !important',
+              marginTop: '17px',
             }}
             breakpoint='lg'
             collapsedWidth='0'
@@ -195,26 +220,39 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
               ></Box>
 
               <Box
-                mt='22px'
-                ml='40px'
+                mt='12px'
+                ml='4px'
                 display='flex'
+                width='80%'
+                // bg='pink'
                 // flexDirection='column'
-                // justifyContent='center'
+                justifyContent='center'
                 // alignItems='center'
                 // pb='23px'
-                // px='16px'
+                px='16px'
               >
-                <Select
-                  placeholder='Switch Organisation'
-                  width='fit-content'
-                  cursor='pointer'
-                  style={styles}
-                  //   value={1}
-                  variant='unstyled'
-                  _selected={{ borderColor: 'none' }}
-                >
-                  Switch Organisation
-                </Select>
+                <Box position='relative'>
+                  {index === 0 && (
+                    <Image
+                      src='/images/briefcase.svg'
+                      width={20}
+                      height={30}
+                      cursor='pointer'
+                      alt=''
+                    />
+                  )}
+                  <Select
+                    placeholder='Switch Organisation'
+                    width='fit-content'
+                    cursor='pointer'
+                    style={styles}
+                    //   value={1}
+                    variant='unstyled'
+                    _selected={{ borderColor: 'none' }}
+                  >
+                    Switch Organisation
+                  </Select>
+                </Box>
               </Box>
               <Menu
                 theme='light'
@@ -230,9 +268,10 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                 // onOpenChange={onOpenChange}
               >
                 <Menu.Item
-                  // className=""
-                  //   icon={<HomeIcon />}
+                  className=''
+                  icon={<Image src={Home} alt='icon' />}
                   key='1'
+                  // style={{ height: '25px' }}
                 >
                   <Link
                     shallow={true}
@@ -267,8 +306,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   </Box>
                 </Box>
                 <Menu.Item
-                  // className=""
-                  //   icon={<BoxIcon color='blue' />}
+                  icon={<Image src={User} alt='icon' />}
                   key='/dashboard'
                 >
                   <Link
@@ -279,11 +317,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                     Users
                   </Link>
                 </Menu.Item>
-                <Menu.Item
-                  // className=""
-                  //   icon={<MapIcon />}
-                  key='/gurantor'
-                >
+                <Menu.Item icon={<Image src={Gurantor} alt='icon' />} key='3'>
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
@@ -293,8 +327,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   </Link>
                 </Menu.Item>
                 <Menu.Item
-                  // className=""
-                  //   icon={<MapIcon />}
+                  icon={<Image src={Loans} alt='icon' />}
                   key='/tracking'
                 >
                   <Link
@@ -306,8 +339,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   </Link>
                 </Menu.Item>
                 <Menu.Item
-                  // className=""
-                  //   icon={<MapIcon />}
+                  icon={<Image src={HandShake} alt='icon' />}
                   key='/tracking'
                 >
                   <Link
@@ -319,8 +351,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   </Link>
                 </Menu.Item>
                 <Menu.Item
-                  // className=""
-                  //   icon={<MapIcon />}
+                  icon={<Image src={PiggyBank} alt='icon' />}
                   key='/tracking'
                 >
                   <Link
@@ -332,9 +363,8 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   </Link>
                 </Menu.Item>
                 <Menu.Item
-                  // className=""
-                  //   icon={<MapIcon />}
                   key='/tracking'
+                  icon={<Image src={LoanRequest} alt='icon' />}
                 >
                   <Link
                     shallow={true}
@@ -367,51 +397,38 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                 </Box>
 
                 <Menu.Item
-                  // className=""
-                  //   icon={<ProfileIcon />}
                   key='5'
+                  icon={<Image src={LoanRequest} alt='icon' />}
                 >
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
                     href='/profile'
                   >
-                    Loans
+                    Transactions
                   </Link>
                 </Menu.Item>
 
-                <Menu.Item
-                  // className=""
-                  //   icon={<BillingIcon />}
-                  key='6'
-                >
+                <Menu.Item key='6' icon={<Image src={Coins} alt='icon' />}>
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
                     href='/billing'
                   >
-                    Billing
+                    Fees and Charges
                   </Link>
                 </Menu.Item>
 
-                <Menu.Item
-                  // className=""
-                  //   icon={<helpIcon />}
-                  key='7'
-                >
+                <Menu.Item key='7'>
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
                     href='/help'
                   >
-                    Help/Supports
+                    Service
                   </Link>
                 </Menu.Item>
-                <Menu.Item
-                  // className=""
-                  //   icon={<ChartIcon />}
-                  key='8'
-                >
+                <Menu.Item key='8'>
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
@@ -441,12 +458,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                     </Text>
                   </Box>
                 </Box>
-                <Menu.Item
-                  // className=""
-
-                  //   icon={<LogoutIcon />}
-                  key='/help'
-                >
+                <Menu.Item key='/help' icon={<Image src={Audit} alt='icon' />}>
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
@@ -459,9 +471,12 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
             </div>
           </Sider>
         )}
-        <Layout style={{ width: 'auto', backgroundColor: '#F9FAFB' }}>
-          <div className='bodyContainer'>
-            <Content>
+        <Layout>
+          <div
+            className={side !== 'hide' && 'bodyContainer'}
+            style={{ backgroundColor: 'green' }}
+          >
+            <Content className={side !== 'hide' && 'contentContainer'}>
               <div className='dashBoardTitle'>{title}</div>
               <div className='crumbs'>{breadCrumb}</div>
               <div className='site-layout-backgrounds'>{children}</div>
