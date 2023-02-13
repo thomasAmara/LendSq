@@ -18,6 +18,7 @@ import Coins from '../public/images/coins.svg';
 import Transactions from '../public/images/transactions.svg';
 import WhiteList from '../public/images/whitelist.svg';
 import Audit from '../public/images/Audit.svg';
+import SwitchOrganisation from '../components/SwitchOrganisationOption';
 import Image from 'next/image';
 import {
   useMediaQuery,
@@ -232,7 +233,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                 px='16px'
               >
                 <Box position='relative'>
-                  {index === 0 && (
+                  {/* {index === 0 && (
                     <Image
                       src='/images/briefcase.svg'
                       width={20}
@@ -240,8 +241,8 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                       cursor='pointer'
                       alt=''
                     />
-                  )}
-                  <Select
+                  )} */}
+                  {/* <Select
                     placeholder='Switch Organisation'
                     width='fit-content'
                     cursor='pointer'
@@ -251,7 +252,19 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                     _selected={{ borderColor: 'none' }}
                   >
                     Switch Organisation
-                  </Select>
+                  </Select> */}
+                  <SwitchOrganisation
+                    text='Organisation'
+                    isIcon={false}
+                    styles={{
+                      // color: 'var(--purple)',
+                      border: 'none',
+                      marginLeft: '0.7rem',
+                      fontSize: '14px',
+                      color: '#213F7D',
+                      fontWeight: '400',
+                    }}
+                  />
                 </Box>
               </Box>
               <Menu
@@ -294,7 +307,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   mb='15px'
                   p='0px 20px'
                 >
-                  <Box mt='20px' ml='8px' mb='20px'>
+                  <Box mt='20px' ml='8px' mb='10px'>
                     <Text
                       fontSize='12px'
                       color='#213F7D'
@@ -384,7 +397,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   mb='15px'
                   p='0px 20px'
                 >
-                  <Box mt='20px' ml='8px' mb='20px'>
+                  <Box mt='20px' ml='8px' mb='10px'>
                     <Text
                       fontSize='12px'
                       color='#213F7D'
