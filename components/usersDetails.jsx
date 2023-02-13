@@ -6,8 +6,12 @@ import {
   Button,
   Input,
   useToast,
-  HStack,
   Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import DashboardLayout from './dashboardLayout';
@@ -15,6 +19,8 @@ import { MdKeyboardBackspace } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { formatter } from '../components/Formatter';
+import StarRatings from 'react-star-ratings';
+import Avatar from '../public/images/profileAvatar.svg';
 
 function UsersDetails() {
   const { customerInfo } = useSelector((state) => state.customerReducer);
@@ -75,12 +81,16 @@ function UsersDetails() {
                   height='100px'
                   cursor='pointer'
                   borderRadius='50%'
+                  display='flex'
+                  justifyContent='center'
                 >
                   <Image
                     width={50}
                     height={50}
+                    alignSelf='center'
                     //src='https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/725.jpg'
                     // src={`${customerInfo.profile.avatar}`}
+                    src={Avatar}
                     alt='userProfile'
                   />
                   {console.log('ioio', `${customerInfo.profile.avatar}`)}
@@ -107,17 +117,62 @@ function UsersDetails() {
                   </Box>
                 </Box>
               </Box>
-              <Box display='flex' alignSelf='center'>
-                <Text color='#213F7D' fontSize='14px' fontWeight='500'>
+              <Box
+                display='flex'
+                flexDirection='column'
+                borderLeft='1px solid #545F7D'
+                alignSelf='center'
+                pl='15px'
+              >
+                <Text
+                  color='#545F7D'
+                  fontSize='14px'
+                  lineHeight='16px'
+                  fontWeight='500'
+                >
                   User Tier
                 </Text>
+                <Box>
+                  <StarRatings
+                    rating={1}
+                    numberOfStars={3}
+                    borderColor='#E9B200'
+                    starDimension='25px'
+                    starRatedColor='#E9B200'
+                    starEmptyColor='#A9A9A9'
+                    name='rating'
+                  />
+                </Box>
               </Box>
-              <Box display='flex' alignSelf='center'>
+              <Box
+                display='flex'
+                borderLeft='1px solid #545F7D'
+                alignSelf='center'
+                pl='15px'
+              >
                 <Text color='#213F7D' fontSize='22px' fontWeight='500'>
                   {formatter.format(200000)}
                 </Text>
               </Box>
             </Stack>
+            <Box mb='0px'>
+              <Tabs spacing={20} mb='-10px'>
+                <TabList style={{ border: 'none' }}>
+                  <Tab selected={{ color: 'white', bg: '#39CDCC' }}>
+                    General Details
+                  </Tab>
+                  <Tab selected={{ color: 'white', bg: '#39CDCC' }}>
+                    Documents
+                  </Tab>
+                  <Tab selected={{ color: 'white', bg: '#39CDCC' }}>
+                    Bank Details
+                  </Tab>
+                  <Tab>Loans</Tab>
+                  <Tab>Savings</Tab>
+                  <Tab>App and System</Tab>
+                </TabList>
+              </Tabs>
+            </Box>
           </Box>
           <Box className='bottomContainer'>
             <Box borderBottom='1px solid #213F7D' borderBottomColor='#213f7d'>
