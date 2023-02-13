@@ -16,7 +16,7 @@
     "@next/font": "13.1.5",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
-    "antd": "^5.1.6",
+    "antd": "^5.2.1",
     "axios": "^1.2.6",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",

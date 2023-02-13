@@ -210,7 +210,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
               }
             }}
           >
-            <div className='sideGroup'>
+            <div className='sideGroup' style={{ overflowY: 'scroll' }}>
               <Box
                 height='40px'
                 d='flex'
@@ -233,26 +233,6 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                 px='16px'
               >
                 <Box position='relative'>
-                  {/* {index === 0 && (
-                    <Image
-                      src='/images/briefcase.svg'
-                      width={20}
-                      height={30}
-                      cursor='pointer'
-                      alt=''
-                    />
-                  )} */}
-                  {/* <Select
-                    placeholder='Switch Organisation'
-                    width='fit-content'
-                    cursor='pointer'
-                    style={styles}
-                    //   value={1}
-                    variant='unstyled'
-                    _selected={{ borderColor: 'none' }}
-                  >
-                    Switch Organisation
-                  </Select> */}
                   <SwitchOrganisation
                     text='Organisation'
                     isIcon={false}
@@ -432,7 +412,10 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                   </Link>
                 </Menu.Item>
 
-                <Menu.Item key='7'>
+                <Menu.Item
+                  key='7'
+                  icon={<Image src={Transactions} alt='icon' />}
+                >
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
@@ -441,7 +424,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                     Service
                   </Link>
                 </Menu.Item>
-                <Menu.Item key='8'>
+                <Menu.Item key='8' icon={<Image src={Coins} alt='icon' />}>
                   <Link
                     shallow={true}
                     style={{ color: '#213F7D' }}
@@ -487,7 +470,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
         <Layout>
           <div
             className={side !== 'hide' && 'bodyContainer'}
-            style={{ backgroundColor: 'green' }}
+            // style={{ backgroundColor: 'green' }}
           >
             <Content className={side !== 'hide' && 'contentContainer'}>
               <div className='dashBoardTitle'>{title}</div>

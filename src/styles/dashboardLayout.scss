@@ -53,6 +53,7 @@
         box-shadow: 0 1px 0 rgb(63 63 68 / 5%), 0 1px 3px rgb(63 63 68 / 15%);
         background-color: #FFF;
         margin-top: 10px;
+        padding-bottom: 20px;
     }
 }
 .bodyContainer{
@@ -75,8 +76,8 @@
  
   .site-layout-backgrounds {
     min-height: calc(100vh - 89px - 50px);
-    padding-top: 15px;
-    // background: #fff;
+    // padding-top: 15px;
+    background: #fff;
   }
 
   @media (max-width:992px){

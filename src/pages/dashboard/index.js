@@ -69,6 +69,7 @@ function Dashboard() {
       ),
       dataIndex: 'orgName',
       key: 'name',
+      responsive: ['xs'],
     },
     {
       title: () => (
@@ -78,6 +79,7 @@ function Dashboard() {
         </Flex>
       ),
       dataIndex: 'userName',
+      responsive: ['xs'],
     },
     {
       title: () => (
@@ -87,7 +89,7 @@ function Dashboard() {
         </Flex>
       ),
       dataIndex: 'email',
-      width: 100,
+      // width: 100,
     },
     {
       title: () => (
@@ -98,6 +100,7 @@ function Dashboard() {
       ),
       dataIndex: 'phoneNumber',
       render: (item) => Object.values(item),
+      responsive: ['xs'],
     },
     {
       title: () => (
@@ -165,16 +168,24 @@ function Dashboard() {
       ),
     },
   ];
+
+  const onChange = (page) => {
+    setState({
+      current: page,
+      minIndex: (page - 1) * pageSize,
+      maxIndex: page * pageSize,
+    });
+  };
   return (
     <DashboardLayout>
-      <Box className='home' bg='#E5E5E5' p='24px 20px 15px'>
+      <Box className='home' bg='#F6F6F6' p='24px 20px 15px'>
         <Box pl='40px' pb='20px' mb='20px'>
           <Text fontSize='24px' fontWeight='500' color='#21357D'>
             USER
           </Text>
           <Box mt='30px'>
             {/* <Stack spacing={7} flexWrap='wrap' direction={['column', 'row']}> */}
-            <Wrap spacing='30px'>
+            <Wrap spacing='28px'>
               {userData.map((data, index) => {
                 return (
                   <Box
@@ -240,24 +251,33 @@ function Dashboard() {
             <Box mt='20px' mb='20px'>
               <Table
                 size='small'
-                pagination={{ pageSize: 10, showSizeChanger: false }}
+                pagination={{
+                  size: 'default',
+                  pageSize: 10,
+                  showSizeChanger: true,
+                  showQuickJumper: false,
+                  showLessItems: false,
+                  position: ['bottomLeft'],
+                  pageSizeOptions: ['10', '50', '100'],
+                  // onChange: { onChange },
+                }}
                 total={10}
                 style={{
                   overflow: 'hidden',
                   overflowX: 'scroll',
-                  borderColor: '#fff',
-                  padding: '5px',
+                  // borderColor: '#fff',
+                  // padding: '5px',
                 }}
                 columns={columns}
                 dataSource={data}
                 rowSelection={id}
-                components={{
-                  Pagination: (props) => (
-                    <div style={{ float: 'right', padding: '20px' }}>
-                      <Pagination pageSize={10} />
-                    </div>
-                  ),
-                }}
+                // components={{
+                //   Pagination: (props) => (
+                //     <div style={{ float: 'right', padding: '20px' }}>
+                //       <Pagination pageSize={10} />
+                //     </div>
+                //   ),
+                // }}
               />
             </Box>
           </Box>
