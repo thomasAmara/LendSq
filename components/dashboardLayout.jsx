@@ -232,7 +232,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                 // pb='23px'
                 px='16px'
               >
-                <Box position='relative'>
+                {/* <Box position='relative'>
                   <SwitchOrganisation
                     text='Organisation'
                     isIcon={false}
@@ -245,7 +245,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
                       fontWeight: '400',
                     }}
                   />
-                </Box>
+                </Box> */}
               </Box>
               <Menu
                 theme='light'

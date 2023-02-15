@@ -12,6 +12,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import DashboardLayout from './dashboardLayout';
@@ -21,8 +22,11 @@ import Image from 'next/image';
 import { formatter } from '../components/Formatter';
 import StarRatings from 'react-star-ratings';
 import Avatar from '../public/images/profileAvatar.svg';
+import { wrap } from 'framer-motion';
+// import { useMediaQuery } from './MediaQuery';
 
 function UsersDetails() {
+  const [isLessThan480] = useMediaQuery('(max-width: 480px)');
   const { customerInfo } = useSelector((state) => state.customerReducer);
 
   return (
@@ -45,19 +49,37 @@ function UsersDetails() {
                 <Link href='/dashboard'>Back to User</Link>
               </Button>
             </Box>
-            <Box className='userInfoContainer'>
+            <Box
+              className='userInfoContainer'
+              display='flex'
+              flexDirection={isLessThan480 ? 'column' : 'row'}
+            >
               <Box>
                 <Text fontWeight='500' fontSize='24px' color='#213F7D'>
                   USERS DETAILS
                 </Text>
               </Box>
-              <Box className='buttons' d='flex' justifyContent='space-between'>
-                <Button color='#E4033B' colorScheme='red' variant='outline'>
+              <Box
+                className='buttons'
+                d='flex'
+                flexDirection={'row'}
+                mt={['10px', '0px']}
+                // flexDirection={['column', 'row']}
+                justifyContent='space-between'
+              >
+                <Button
+                  color='#E4033B'
+                  colorScheme='red'
+                  maxW={['50%', '100%']}
+                  variant='outline'
+                  // size={['sm', 'md', 'lg']}
+                >
                   BLACKLIST USER
                 </Button>
                 <Button
                   //   borderColor='#39CDCC'
                   //   border='2px'
+                  maxW={['50%', '100%']}
                   borderRadius='8px'
                   colorScheme='cyan'
                   variant='outline'
@@ -68,11 +90,11 @@ function UsersDetails() {
             </Box>
           </Box>
           <Box className='midContainer'>
-            <Stack direction='row' spacing='30px'>
+            <Stack direction={['column', 'row']} spacing='30px'>
               <Box
                 display='flex'
                 flexDirection='row'
-                w='35%'
+                w={['100%', '35%']}
                 justifyContent='space-between'
               >
                 <Box
@@ -120,9 +142,10 @@ function UsersDetails() {
               <Box
                 display='flex'
                 flexDirection='column'
-                borderLeft='1px solid #545F7D'
+                borderLeft={isLessThan480 ? 'none' : '1px solid #545F7D'}
                 alignSelf='center'
-                pl='15px'
+                pl={isLessThan480 ? '0px' : '15px'}
+                w={['100%', '20%']}
               >
                 <Text
                   color='#545F7D'
@@ -146,9 +169,10 @@ function UsersDetails() {
               </Box>
               <Box
                 display='flex'
-                borderLeft='1px solid #545F7D'
+                borderLeft={isLessThan480 ? 'none' : '1px solid #545F7D'}
                 alignSelf='center'
-                pl='15px'
+                pl={isLessThan480 ? '0px' : '15px'}
+                w={['100%', '35%']}
               >
                 <Text color='#213F7D' fontSize='22px' fontWeight='500'>
                   {formatter.format(200000)}
@@ -157,19 +181,19 @@ function UsersDetails() {
             </Stack>
             <Box mb='0px'>
               <Tabs spacing={20} mb='-10px'>
-                <TabList style={{ border: 'none' }}>
+                <TabList overflowX='auto' style={{ border: 'none' }}>
                   <Tab selected={{ color: 'white', bg: '#39CDCC' }}>
                     General Details
                   </Tab>
-                  <Tab selected={{ color: 'white', bg: '#39CDCC' }}>
+                  <Tab isDisabled selected={{ color: 'white', bg: '#39CDCC' }}>
                     Documents
                   </Tab>
-                  <Tab selected={{ color: 'white', bg: '#39CDCC' }}>
+                  <Tab isDisabled selected={{ color: 'white', bg: '#39CDCC' }}>
                     Bank Details
                   </Tab>
-                  <Tab>Loans</Tab>
+                  {/* <Tab>Loans</Tab>
                   <Tab>Savings</Tab>
-                  <Tab>App and System</Tab>
+                  <Tab>App and System</Tab> */}
                 </TabList>
               </Tabs>
             </Box>
@@ -188,34 +212,55 @@ function UsersDetails() {
               </Box>
               <Box>
                 <Stack
-                  direction={['column', 'row']}
-                  w='full'
+                  direction={['column', 'row', 'row']}
+                  flexWrap='wrap'
+                  w='100%'
+                  // w='full'
                   mt='20px'
-                  spacing='24px'
+                  justifyContent='space-between'
+                  spacingY='50px'
+                  // spacing='60px'
                 >
-                  <Box w='full'>
+                  <Box width='200px'>
                     <Text className='textHeading'>Full Name</Text>
                     <Text className='textInfo'>{customerInfo.userName}</Text>
                   </Box>
-                  <Box w='full'>
+                  <Box width='200px'>
                     <Text className='textHeading'>Phone Number</Text>
                     <Text className='textInfo'>
                       {customerInfo.profile.phoneNumber}
                     </Text>
                   </Box>
-                  <Box w='full'>
+                  <Box width='200px'>
                     <Text className='textHeading'>Email Address</Text>
                     <Text className='textInfo'> {customerInfo.email}</Text>
                   </Box>
-                  <Box w='full'>
+                  <Box width='200px'>
                     <Text className='textHeading'>BVN</Text>
                     <Text className='textInfo'>{customerInfo.profile.bvn}</Text>
                   </Box>
-                  <Box w='full'>
+                  <Box width='200px' mt='20px'>
                     <Text className='textHeading'>Gender</Text>
                     <Text className='textInfo'>
                       {customerInfo.profile.gender}
                     </Text>
+                  </Box>
+                  <Box width='200px' mt='20px'>
+                    <Text className='textHeading'>Marital Status</Text>
+                    <Text className='textInfo'>Marital Status</Text>
+                  </Box>
+                  <Box width='200px' mt='50px'>
+                    <Text className='textHeading'>Children</Text>
+                    <Text className='textInfo'>None</Text>
+                  </Box>
+                  <Box
+                    width='200px'
+                    mt='20px'
+                    display='flex'
+                    flexDirection='column'
+                  >
+                    <Text className='textHeading'>Type of Residence</Text>
+                    <Text className='textInfo'>Parent Apartment</Text>
                   </Box>
                 </Stack>
               </Box>
@@ -226,20 +271,7 @@ function UsersDetails() {
                   mt='20px'
                   spacing='24px'
                   mb='20px'
-                >
-                  <Box w='full'>
-                    <Text className='textHeading'>Marital Status</Text>
-                    <Text className='textInfo'>Marital Status</Text>
-                  </Box>
-                  <Box w='full'>
-                    <Text className='textHeading'>Children</Text>
-                    <Text className='textInfo'>None</Text>
-                  </Box>
-                  <Box w='full' display='flex' flexDirection='column'>
-                    <Text className='textHeading'>Type of Residence</Text>
-                    <Text className='textInfo'>Parent Apartment</Text>
-                  </Box>
-                </Stack>
+                ></Stack>
               </Box>
             </Box>
             <Box borderBottom='1px solid #213F7D'>
@@ -255,25 +287,25 @@ function UsersDetails() {
               </Box>
               <Box>
                 <Stack direction={['column', 'row']} mt='20px'>
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Level of Education</Text>
                     <Text className='textInfo'>
                       {customerInfo.education.level}
                     </Text>
                   </Box>
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Employment Status</Text>
                     <Text className='textInfo'>
                       {customerInfo.education.employmentStatus}
                     </Text>
                   </Box>
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Sector of Employment</Text>
                     <Text className='textInfo'>
                       {customerInfo.education.sector}
                     </Text>
                   </Box>
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Duration of Employment</Text>
                     <Text className='textInfo'>
                       {customerInfo.education.duration}
@@ -288,16 +320,16 @@ function UsersDetails() {
                   mb='20px'
                   mt='20px'
                 >
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Office Email</Text>
                     <Text className='textInfo'>
                       {customerInfo.education.officeEmail}
                     </Text>
                   </Box>
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Monthly Income</Text>
                     <Box
-                      //   w='full'
+                      //   w='241px'
                       w='50%'
                       display='flex'
                       flexDirection='row'
@@ -316,7 +348,7 @@ function UsersDetails() {
                       </Text>
                     </Box>
                   </Box>
-                  <Box w='full'>
+                  <Box w='241px'>
                     <Text className='textHeading'>Loan Repayment</Text>
                     <Text className='textInfo'>
                       {customerInfo.education.loanRepayment}
