@@ -129,7 +129,7 @@ const DashboardLayout = ({ children, breadCrumb, title, size, side }) => {
               </InputGroup>
             </Box>
             <Box className='userNotifications'>
-              <Box alignSelf='center' cursor='pointer'>
+              <Box className='Docs' alignSelf='center' cursor='pointer'>
                 <Text
                   textDecoration='underline'
                   fontWeight='400'
