@@ -86,3 +86,23 @@
       margin-right: 0px;
     }
   }
+
+  @media (max-width: 480px) {
+    .userLayout{ 
+            .site-layout-sub-header-background {
+            .headerDetail{
+                .headerRight{
+                    margin-left:25px;
+                    .searchBox{
+                        display: none;
+                    }
+                    .userNotifications{
+                        .Docs{
+                        display: none;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+  }
