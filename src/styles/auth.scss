@@ -36,3 +36,15 @@
         padding-top: 30px;
     }
 }
+
+
+@media (max-width:485px){
+    .authContainer{
+        .leftContainer{
+          display: none;
+      }
+      .loginContainer{
+        max-width: 70%;
+      }
+    }
+  }
