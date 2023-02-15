@@ -79,7 +79,7 @@ function Dashboard() {
         </Flex>
       ),
       dataIndex: 'userName',
-      responsive: ['xs'],
+      // responsive: ['xs'],
     },
     {
       title: () => (
@@ -100,7 +100,7 @@ function Dashboard() {
       ),
       dataIndex: 'phoneNumber',
       render: (item) => Object.values(item),
-      responsive: ['xs'],
+      // responsive: ['xs'],
     },
     {
       title: () => (
@@ -111,7 +111,7 @@ function Dashboard() {
       ),
       dataIndex: 'createdAt',
       render: (value) => {
-        return <span>{moment(value).format('lll')}</span>;
+        return <span>{moment(value).format('LLL')}</span>;
       },
     },
     {
@@ -184,15 +184,20 @@ function Dashboard() {
             USER
           </Text>
           <Box mt='30px'>
-            {/* <Stack spacing={7} flexWrap='wrap' direction={['column', 'row']}> */}
-            <Wrap spacing='28px'>
+            <Stack
+              spacing='30px'
+              // flexWrap='wrap'
+              direction={['column', 'row', 'row']}
+            >
+              {/* <Wrap spacing={10}> */}
               {userData.map((data, index) => {
                 return (
                   <Box
                     className='customerContainer'
                     // border='1px solid blue'
                     key={index}
-                    maxWidth={isLargerThan480 ? '240px' : '320px'}
+                    maxWidth={['330px', '180px', '230px']}
+                    // maxWidth={isLargerThan480 ? '230px' : '290px'}
                   >
                     <Box
                       bg={
@@ -246,8 +251,8 @@ function Dashboard() {
                   </Box>
                 );
               })}
-            </Wrap>
-            {/* </Stack> */}
+              {/* </Wrap> */}
+            </Stack>
             <Box mt='20px' mb='20px'>
               <Table
                 size='small'
